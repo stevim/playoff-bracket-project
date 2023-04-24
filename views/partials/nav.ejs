@@ -4,7 +4,18 @@
 </head>
 <body>
   <nav>
+    <i class="fas fa-trophy-star fa-2x"></i>
+    <a
+      href="/brackets/index" class=<%= title === 'All Brackets' ? 'active' : '' %>
+    >
+      ALL BRACKETS
+    </a>
     <% if (user) { %>
+      <a 
+        href="/index" class=<%= title === 'Your Profile' ? 'active' : '' %>
+      >
+        YOUR PROFILE
+      </a>
       <a href="/auth/logout" class="right">
         <button type="submit">Logout</button>
       </a>
