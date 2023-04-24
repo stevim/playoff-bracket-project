@@ -1,0 +1,14 @@
+<%- include('./partials/html-head') %>
+<%- include('./partials/nav') %>
+
+<section>
+  <h1>Brackets!</h1>
+  <h2>All Brackets</h2>>
+  <ul>
+    <% brackets.forEach(bracket => { %>
+      <a href="/brackets/<%= bracket._id %>"><%= bracket.title %></a>
+    <% }) %>
+  </ul>
+</section>
+
+<%- include('./partials/footer') %>
