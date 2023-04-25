@@ -7,6 +7,4 @@ router.get('/new', teamsCtrl.new)
 
 router.post('/', teamsCtrl.create)
 
-router.delete('/:pageId/teams/:teamId', teamsCtrl.delete)
-
 export { router }

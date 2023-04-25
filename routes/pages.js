@@ -23,6 +23,11 @@ router.post('/:pageId/athletes', pagesCtrl.addToFavAthletes)
 router.delete('/:pageId', pagesCtrl.delete)
 // DELETE localhost:3000/pages/:pageId/comments/:commentId
 router.delete('/:pageId/comments/:commentId', pagesCtrl.deleteComment)
+// DELETE localhost:3000/pages/:pageId/teams/:teamId
+router.delete('/:pageId/teams/:teamId', pagesCtrl.deleteTeam)
+// DELETE localhost:3000/pages/:pageId/athletes/:athleteId
+router.delete('/:pageId/athletes/:athleteId', pagesCtrl.deleteAthlete)
+
 // PUT localhost:3000/pages/:pageId
 router.put('/:pageId', pagesCtrl.update)
 

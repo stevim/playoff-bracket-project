@@ -26,19 +26,7 @@ function create(req,res) {
   })
 }
 
-function deleteTeam(req, res) {
-  Team.findByIdAndDelete(req.params.teamId)
-  .then(team => {
-    res.redirect('/teams')
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/teams')
-  })
-}
-
 export {
   create,
   newTeam as new,
-  deleteTeam as team,
 }

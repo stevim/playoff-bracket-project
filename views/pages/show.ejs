@@ -5,18 +5,54 @@
 <main>
   <h1><%= title %></h1>
   <section>
-    <div>Title: </div>
-		<div>
+    <div>
+      Title: 
       <%= page.title %> 
       <a href="/pages/<%= page._id %>/edit">
         <button>Edit Page</button>
       </a>
     </div>
-    <div>Favourite Teams:</div>
+    <div>
+      <table>
+        <thead>
+          <tc>
+            <th>Favourite Teams:</th>
+            <th></th>
+          </tc>
+          <tc>
+            <th>Favourite Athletes:</th>
+            <th></th>
+          </tc>
+        </thead>
+        <tbody>
+          <% page.favTeams.forEach(favTeam => { %>
+            <tc>
+              <tr>
+                <td><%= favTeam.name %></td>
+                <td>
+                  <form action="/pages/<%= page._id %>/teams/<%= favTeam._id %>?_method=DELETE" method="POST">
+                    <button>X</button>
+                  </form>
+                </td>
+              </tr>
+            </tc>
+          <% }) %>
+          <% page.favAthletes.forEach(favAthlete => { %>
+            <tc>
+              <tr>
+                <td><%= favAthlete.name %></td>
+                <td>
+                  <form action="/pages/<%= page._id %>/athletes/<%= favAthlete._id %>?_method=DELETE" method="POST">
+                    <button>X</button>
+                  </form>
+                </td>
+              </tr>
+            </tc>  
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
     <ul>
-      <% page.favTeams.forEach(favTeam => { %>
-        <li><%= favTeam.name %></li>
-      <% }) %>
     </ul>
   </section>
 
@@ -64,7 +100,6 @@
         <tr>
           <th>Date</th>
           <th>Comments</th>
-          <th>Commenter</th>
 					<th></th>
         </tr>
       </thead>
@@ -73,7 +108,6 @@
           <tr>
             <td><%= comment.createdAt.toLocaleDateString() %></td>
             <td><%= comment.content %></td>
-            <td><%= page.creator.name %></td>
 						<td>
               <form action="/pages/<%= page._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
                 <button>X</button>

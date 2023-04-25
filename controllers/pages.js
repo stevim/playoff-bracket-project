@@ -38,12 +38,10 @@ function index(req, res) {
 
 function show(req, res) {
   Page.findById(req.params.pageId)
-  .populate(['favTeams','favAthletes','creator'])
+  .populate(['favTeams','favAthletes',])
   .then(page => {
     Team.find({_id: {$nin: page.favTeams}})
     .then(teams => {
-      // console.log(page, '<--- PAGE')
-      // console.log(teams, '<--- TEAMS NOT IN PAGE')
       Athlete.find({_id: {$nin: page.favAthletes}})
       .then(athletes => {
         res.render('pages/show', {
@@ -131,7 +129,6 @@ function deleteComment(req, res) {
   Page.findById(req.params.pageId)
   .then(page => {
     page.comments.remove(req.params.commentId)
-    page.comments.id(req.params.commentId).deleteOne()
     page.save()
     .then(() => {
       res.redirect(`/pages/${page._id}`)
@@ -186,6 +183,28 @@ function addToFavAthletes(req, res) {
   })
 }
 
+function deleteTeam(req,res) {
+  Team.findByIdAndDelete(req.params.teamId)
+  .then(page => {
+    res.redirect(`/pages/${req.params.pageId}`)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/pages')
+  })
+}
+
+function deleteAthlete(req,res) {
+  Athlete.findByIdAndDelete(req.params.athleteId)
+  .then(page => {
+    res.redirect(`/pages/${req.params.pageId}`)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/pages')
+  })
+}
+
 
 export {
   newPage as new,
@@ -199,4 +218,6 @@ export {
   deleteComment,
   addToFavTeams,
   addToFavAthletes,
+  deleteTeam,
+  deleteAthlete,
 }
