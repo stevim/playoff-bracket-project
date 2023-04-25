@@ -13,7 +13,7 @@
       </a>
     </div>
   </section>
-	<%# add to cast form below this comment %>
+
   <form 
     id="add-teams-to-fav" 
     action="/pages/<%= page._id %>/teams" 
@@ -26,6 +26,7 @@
     </select>
     <button type="submit">Add Favourite Teams</button>
   </form>
+  
   <h2>Comments</h2>
   <form 
     id="add-comment-form"
@@ -36,6 +37,36 @@
     <textarea name="content" id="content-textarea"></textarea>
     <button type="submit">Add Comment</button>
   </form>
+
+  <% if (page.comments.length) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Comments</th>
+					<th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% page.comments.forEach(function(comment) { %>
+          <tr>
+            <td><%= comment.createdAt.toLocaleDateString() %></td>
+            <td><%= comment.content %></td>
+						<td>
+              <form action="/pages/<%= page._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                <button>X</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+        <tr>
+          <td colspan="2"></td>
+        </tr>
+      </tbody>
+    </table>
+  <% } else { %>
+    <h3>Add the first comment</h3>
+  <% } %>
 </main>
 
 
