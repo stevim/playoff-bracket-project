@@ -1,5 +1,6 @@
 import { Page } from "../models/page.js"
 import { Team } from "../models/team.js"
+import { Athlete } from "../models/athlete.js"
 
 function newPage(req, res) {
   res.render('pages/new', {
@@ -37,16 +38,24 @@ function index(req, res) {
 
 function show(req, res) {
   Page.findById(req.params.pageId)
-  .populate('favTeams')
+  .populate(['favTeams','favAthletes','creator'])
   .then(page => {
     Team.find({_id: {$nin: page.favTeams}})
     .then(teams => {
-      console.log(page, '<--- PAGE')
-      console.log(teams, '<--- TEAMS NOT IN PAGE')
-      res.render('pages/show', {
-        page: page,
-        title: 'Page Detail',
-        teams: teams
+      // console.log(page, '<--- PAGE')
+      // console.log(teams, '<--- TEAMS NOT IN PAGE')
+      Athlete.find({_id: {$nin: page.favAthletes}})
+      .then(athletes => {
+        res.render('pages/show', {
+          page,
+          title: 'Page Detail',
+          teams,
+          athletes,
+        })
+      })
+      .catch(err => {
+        console.log(err)
+        res.redirect('/pages')
       })
     })
     .catch(err => {
@@ -75,7 +84,7 @@ function edit(req, res) {
   Page.findById(req.params.pageId)
   .then(page => {
     res.render('pages/edit', {
-      page: page,
+      page,
       title: 'Edit Page'
     })
   })
@@ -155,11 +164,28 @@ function addToFavTeams(req, res) {
     console.log(err)
     res.redirect('/pages')
   })
-  // find the page using it's _id
-  // push the peformer _id into the favTeams array
-  // save the page
-  // redirect back to show view
 }
+
+function addToFavAthletes(req, res) {
+  // console.log('this works')
+  Page.findById(req.params.pageId)
+  .then(page => {
+    page.favAthletes.push(req.body.athleteId)
+    page.save()
+    .then(() => {
+      res.redirect(`/pages/${page._id}`)
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/pages')
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/pages')
+  })
+}
+
 
 export {
   newPage as new,
@@ -171,5 +197,6 @@ export {
   update,
   createComment,
   deleteComment,
-  addToFavTeams
+  addToFavTeams,
+  addToFavAthletes,
 }

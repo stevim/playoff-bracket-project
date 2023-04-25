@@ -12,11 +12,17 @@
         <button>Edit Page</button>
       </a>
     </div>
+    <div>Favourite Teams:</div>
+    <ul>
+      <% page.favTeams.forEach(favTeam => { %>
+        <li><%= favTeam.name %></li>
+      <% }) %>
+    </ul>
   </section>
 
-  <form 
+  <form
     id="add-teams-to-fav" 
-    action="/pages/<%= page._id %>/teams" 
+    action="/pages/<%= page._id %>/teams"
     method="POST"
   >
     <select name="teamId">
@@ -26,6 +32,20 @@
     </select>
     <button type="submit">Add Favourite Teams</button>
   </form>
+  
+  <form 
+    id="add-athletes-to-fav" 
+    action="/pages/<%= page._id %>/athletes" 
+    method="POST"
+  >
+    <select name="athleteId">
+      <% athletes.forEach(athlete => { %>
+        <option value="<%= athlete._id %>"><%= athlete.name %></option>
+      <% }) %>
+    </select>
+    <button type="submit">Add Favourite Athletes</button>
+  </form>
+
   
   <h2>Comments</h2>
   <form 
@@ -44,6 +64,7 @@
         <tr>
           <th>Date</th>
           <th>Comments</th>
+          <th>Commenter</th>
 					<th></th>
         </tr>
       </thead>
@@ -52,6 +73,7 @@
           <tr>
             <td><%= comment.createdAt.toLocaleDateString() %></td>
             <td><%= comment.content %></td>
+            <td><%= page.creator.name %></td>
 						<td>
               <form action="/pages/<%= page._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
                 <button>X</button>

@@ -17,6 +17,8 @@ router.post('/', pagesCtrl.create)
 router.post('/:pageId/comments', pagesCtrl.createComment)
 // POST localhost:3000/pages/:pageId/teams
 router.post('/:pageId/teams', pagesCtrl.addToFavTeams)
+// POST localhost:3000/pages/:pageId/athletes
+router.post('/:pageId/athletes', pagesCtrl.addToFavAthletes)
 // DELETE localhost:3000/pages/:pageId
 router.delete('/:pageId', pagesCtrl.delete)
 // DELETE localhost:3000/pages/:pageId/comments/:commentId
