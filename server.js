@@ -23,6 +23,7 @@ import { router as indexRouter } from './routes/index.js'
 import { router as authRouter } from './routes/auth.js'
 import { router as pageRouter } from './routes/pages.js'
 import { router as teamRouter } from './routes/teams.js'
+import { router as athleteRouter } from './routes/athletes.js'
 
 
 // create the express app
@@ -66,6 +67,7 @@ app.use('/', indexRouter)
 app.use('/auth', authRouter)
 app.use('/pages', pageRouter)
 app.use('/teams', teamRouter)
+app.use('/athletes', athleteRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
