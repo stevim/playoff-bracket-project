@@ -1,0 +1,14 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/pages/forms.css" />
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <form id="new-form" action="/pages" method="POST">
+    <label for="title-input">Title:</label>
+    <input type="text" name="title" id="title-input">
+    <button type="submit">Add Page</button>
+  </form>
+</main>
+
+<%- include("../partials/footer") %>

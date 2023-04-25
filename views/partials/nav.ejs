@@ -5,16 +5,26 @@
 <body>
   <nav>
     <i class="fas fa-trophy-star fa-2x"></i>
-    <a
-      href="/brackets/index" class=<%= title === 'All Brackets' ? 'active' : '' %>
+    <a 
+      href="/pages/index"
     >
-      ALL BRACKETS
+      ALL PAGES
+    </a>
+    <a
+      href="/teams/new"
+    >
+      ADD TEAM
     </a>
     <% if (user) { %>
       <a 
         href="/index" class=<%= title === 'Your Profile' ? 'active' : '' %>
       >
         YOUR PROFILE
+      </a>
+      <a
+        href="/pages/new"
+      >
+        ADD PAGE
       </a>
       <a href="/auth/logout" class="right">
         <button type="submit">Logout</button>

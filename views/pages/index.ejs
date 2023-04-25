@@ -1,0 +1,30 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+  <h1>Page List</h1>
+  <table id="list">
+    <thead>
+      <tr>
+        <th>Creator</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% pages.forEach((page) => { %>
+      <tr>
+        <td><%= page.title %></td>
+        <td><a href="/pages/<%= page._id %>">DETAILS</a></td>
+        <td>
+          <form action="/pages/<%= page._id %>?_method=DELETE" method="POST">
+            <button type="submit">X</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</main>
+
+<%- include('../partials/footer') %>

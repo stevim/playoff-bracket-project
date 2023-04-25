@@ -21,7 +21,7 @@ import'./config/passport.js'
 // import routes
 import { router as indexRouter } from './routes/index.js'
 import { router as authRouter } from './routes/auth.js'
-import { router as bracketRouter } from './routes/brackets.js'
+import { router as pageRouter } from './routes/pages.js'
 import { router as teamRouter } from './routes/teams.js'
 
 
@@ -64,7 +64,7 @@ app.use(passDataToView)
 // mount imported routes
 app.use('/', indexRouter)
 app.use('/auth', authRouter)
-app.use('/brackets', bracketRouter)
+app.use('/pages', pageRouter)
 app.use('/teams', teamRouter)
 
 // catch 404 and forward to error handler
