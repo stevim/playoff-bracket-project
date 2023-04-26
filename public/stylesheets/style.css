@@ -27,6 +27,11 @@ nav {
   align-items: center;
   padding: 10px;
   min-height: 60px;
+  gap: 10px;
+}
+
+#nav-bar-link {
+  margin: 0 10px;
 }
 
 main {

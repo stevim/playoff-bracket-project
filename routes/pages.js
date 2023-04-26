@@ -28,7 +28,6 @@ router.delete('/:pageId/comments/:commentId', isLoggedIn, pagesCtrl.deleteCommen
 router.delete('/:pageId/teams/:teamId', isLoggedIn, pagesCtrl.deleteTeam)
 // DELETE localhost:3000/pages/:pageId/athletes/:athleteId
 router.delete('/:pageId/athletes/:athleteId', isLoggedIn, pagesCtrl.deleteAthlete)
-
 // PUT localhost:3000/pages/:pageId
 router.put('/:pageId', pagesCtrl.update)
 
