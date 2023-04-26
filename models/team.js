@@ -6,7 +6,8 @@ const teamSchema = new Schema({
   name: {
     type: String,
     required: true
-  }
+  },
+  logo: String
 }, {
     timestamps: true
 })

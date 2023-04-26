@@ -19,30 +19,21 @@ function create(req, res) {
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/pages/new')
+    res.redirect('/pages')
   })
 }
 
 function index(req, res) {
   Page.find({})
-  // .populate([
-  //   { 
-  //     path: 'comments',
-  //     populate: {
-  //       path: 'creator',
-  //       model: 'Profile'
-  //     },
-  //   }, 
-  //   'favTeams','favAthletes','creator'])
   .then(pages => {
     res.render('pages/index', {
       pages: pages,
-      title: 'All Movies'
+      title: 'Page List'
     })
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/pages/new')
+    res.redirect('/pages')
   })
 }
 
@@ -64,7 +55,7 @@ function show(req, res) {
       .then(athletes => {
         res.render('pages/show', {
           page,
-          title: 'Page Detail',
+          title: page.title,
           teams,
           athletes,
         })
@@ -101,7 +92,7 @@ function edit(req, res) {
   .then(page => {
     res.render('pages/edit', {
       page,
-      title: 'Edit Page'
+      title: 'Change Page Name'
     })
   })
   .catch(err => {
@@ -127,14 +118,6 @@ function update(req, res) {
 function createComment(req, res) {
   req.body.creator=req.user.profile._id
   Page.findById(req.params.pageId)
-  .populate(
-    { 
-      path: 'comments',
-      populate: {
-        path: 'creator',
-        model: 'Profile'
-      },
-    })
   .then(page => {
     page.comments.push(req.body)
     page.save()
