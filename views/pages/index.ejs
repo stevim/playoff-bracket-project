@@ -16,7 +16,7 @@
       <% pages.forEach((page) => { %>
       <tr>
         <td><%= page.title %></td>
-        <td><a href="/pages/<%= page._id %>">DETAILS</a></td>
+        <td><a href="/pages/<%= page._id %>">Check out the Page</a></td>
         <td>
           <form action="/pages/<%= page._id %>?_method=DELETE" method="POST">
             <button type="submit">X</button>
