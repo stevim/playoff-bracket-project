@@ -23,7 +23,7 @@ nav {
   gap: 10px;
 }
 
-#nav-bar-link {
+.nav-bar-link {
   margin: 0 10px;
   color: red;
 }
@@ -37,4 +37,8 @@ main {
 
 .right {
   margin-left: auto;
+}
+
+.logout-btn {
+  
 }

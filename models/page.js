@@ -7,6 +7,9 @@ const commentSchema = new Schema({
     type: String,
     required: true,
   },
+  creator: {
+    type: Schema.Types.ObjectId, ref: 'Profile'
+  }
 }, {
   timestamps: true,
 })
@@ -23,9 +26,9 @@ const pageSchema = new Schema({
   favAthletes: [{
     type: Schema.Types.ObjectId, ref: 'Athlete'
   }],
-  creator: [{
+  creator: {
     type: Schema.Types.ObjectId, ref: 'Profile'
-  }]
+  }
 }, {
   timestamps: true,
 })

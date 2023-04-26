@@ -8,9 +8,11 @@
     <div>
       Title: 
       <%= page.title %> 
-      <a href="/pages/<%= page._id %>/edit">
-        <button>Edit Page</button>
-      </a>
+      <% if (page.creator.equals(user?.profile._id)) { %>
+        <a href="/pages/<%= page._id %>/edit">
+          <button>Edit Page</button>
+        </a>
+      <% } %>
     </div>
     <div>
       <table>
@@ -29,11 +31,13 @@
             <tc>
               <tr>
                 <td><%= favTeam.name %></td>
+                <% if (page.creator.equals(user?.profile._id)) { %>
                 <td>
                   <form action="/pages/<%= page._id %>/teams/<%= favTeam._id %>?_method=DELETE" method="POST">
                     <button>X</button>
                   </form>
                 </td>
+                <% } %>
               </tr>
             </tc>
           <% }) %>
@@ -41,48 +45,49 @@
             <tc>
               <tr>
                 <td><%= favAthlete.name %></td>
+                <% if (page.creator.equals(user?.profile._id)) { %>
                 <td>
                   <form action="/pages/<%= page._id %>/athletes/<%= favAthlete._id %>?_method=DELETE" method="POST">
                     <button>X</button>
                   </form>
                 </td>
+                <% } %>
               </tr>
             </tc>  
           <% }) %>
         </tbody>
       </table>
     </div>
-    <ul>
-    </ul>
   </section>
-
-  <form
-    id="add-teams-to-fav" 
-    action="/pages/<%= page._id %>/teams"
-    method="POST"
-  >
-    <select name="teamId">
-      <% teams.forEach(team => { %>
-        <option value="<%= team._id %>"><%= team.name %></option>
-      <% }) %>
-    </select>
-    <button type="submit">Add Favourite Teams</button>
-  </form>
+  <% if (page.creator.equals(user?.profile._id)) { %>
+    <form
+      id="add-teams-to-fav" 
+      action="/pages/<%= page._id %>/teams"
+      method="POST"
+    >
+      <select name="teamId">
+        <% teams.forEach(team => { %>
+          <option value="<%= team._id %>"><%= team.name %></option>
+        <% }) %>
+      </select>
+      <button type="submit">Add Favourite Teams</button>
+    </form>
+    
+    <form 
+      id="add-athletes-to-fav" 
+      action="/pages/<%= page._id %>/athletes" 
+      method="POST"
+    >
+      <select name="athleteId">
+        <% athletes.forEach(athlete => { %>
+          <option value="<%= athlete._id %>"><%= athlete.name %></option>
+        <% }) %>
+      </select>
+      <button type="submit">Add Favourite Athletes</button>
+    </form>
+  <% } %>
   
-  <form 
-    id="add-athletes-to-fav" 
-    action="/pages/<%= page._id %>/athletes" 
-    method="POST"
-  >
-    <select name="athleteId">
-      <% athletes.forEach(athlete => { %>
-        <option value="<%= athlete._id %>"><%= athlete.name %></option>
-      <% }) %>
-    </select>
-    <button type="submit">Add Favourite Athletes</button>
-  </form>
-
-  
+  <% if (user) { %>
   <h2>Comments</h2>
   <form 
     id="add-comment-form"
@@ -93,35 +98,38 @@
     <textarea name="content" id="content-textarea"></textarea>
     <button type="submit">Add Comment</button>
   </form>
-
-  <% if (page.comments.length) { %>
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Comments</th>
-					<th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% page.comments.forEach(function(comment) { %>
+    <% if (page.comments.length) { %>
+      <table>
+        <thead>
           <tr>
-            <td><%= comment.createdAt.toLocaleDateString() %></td>
-            <td><%= comment.content %></td>
-						<td>
-              <form action="/pages/<%= page._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                <button>X</button>
-              </form>
-            </td>
+            <th>Date</th>
+            <th>Comments</th>
+            <th></th>
           </tr>
-        <% }) %>
-        <tr>
-          <td colspan="2"></td>
-        </tr>
-      </tbody>
-    </table>
-  <% } else { %>
-    <h3>Add the first comment</h3>
+        </thead>
+        <tbody>
+          <% page.comments.forEach(function(comment) { %>
+            <tr>
+              <td><%= comment.createdAt.toLocaleDateString() %></td>
+              <td><%= comment.content %></td>
+              <td>-<%= comment.creator.name %></td>
+              <% if (comment.creator.equals(user?.profile._id)) { %>
+              <td>
+                <form action="/pages/<%= page._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                  <button>X</button>
+                </form>
+              </td>
+              <% } %>
+            </tr>
+          <% }) %>
+          <tr>
+            <td colspan="2"></td>
+          </tr>
+        </tbody>
+      </table>
+    <% } else { %>
+      <h3>Leave a comment!</h3>
+    <% } %>
   <% } %>
 </main>
 

@@ -9,6 +9,7 @@ function newPage(req, res) {
 }
 
 function create(req, res) {
+  req.body.creator=req.user.profile._id
   for (let key in req.body) {
     if (req.body[key] === '') delete req.body[key]
   }
@@ -24,6 +25,15 @@ function create(req, res) {
 
 function index(req, res) {
   Page.find({})
+  // .populate([
+  //   { 
+  //     path: 'comments',
+  //     populate: {
+  //       path: 'creator',
+  //       model: 'Profile'
+  //     },
+  //   }, 
+  //   'favTeams','favAthletes','creator'])
   .then(pages => {
     res.render('pages/index', {
       pages: pages,
@@ -38,7 +48,15 @@ function index(req, res) {
 
 function show(req, res) {
   Page.findById(req.params.pageId)
-  .populate(['favTeams','favAthletes',])
+  .populate([
+    { 
+      path: 'comments',
+      populate: {
+        path: 'creator',
+        model: 'Profile'
+      },
+    }, 
+    'favTeams','favAthletes','creator'])
   .then(page => {
     Team.find({_id: {$nin: page.favTeams}})
     .then(teams => {
@@ -107,7 +125,16 @@ function update(req, res) {
 }
 
 function createComment(req, res) {
+  req.body.creator=req.user.profile._id
   Page.findById(req.params.pageId)
+  .populate(
+    { 
+      path: 'comments',
+      populate: {
+        path: 'creator',
+        model: 'Profile'
+      },
+    })
   .then(page => {
     page.comments.push(req.body)
     page.save()
@@ -164,7 +191,6 @@ function addToFavTeams(req, res) {
 }
 
 function addToFavAthletes(req, res) {
-  // console.log('this works')
   Page.findById(req.params.pageId)
   .then(page => {
     page.favAthletes.push(req.body.athleteId)

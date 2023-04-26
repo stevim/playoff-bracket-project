@@ -11,3 +11,7 @@ ADD TEAM
 <a 
 href="/pages" class=<%= title === 'All Pages' ? 'active' : '' %>
 >
+
+
+<% pages.forEach((page) => { %>
+<% }) %>
