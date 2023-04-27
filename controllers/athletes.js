@@ -10,7 +10,7 @@ function newAthlete(req,res) {
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/athletes/new')
+    res.redirect('/athletes/index')
   })
 }
 
@@ -41,6 +41,15 @@ function create(req,res) {
 
 function show(req, res) {
   Athlete.findById(req.params.athleteId)
+  .populate([
+    {
+      path: 'comments',
+      populate: {
+        path: 'creator',
+        model: 'Profile'
+      }
+    }
+  ])
   .then(athlete => {
     res.render('athletes/show', {
       athlete,
@@ -66,7 +75,7 @@ function deleteAthlete(req, res) {
 
 function createComment(req, res) {
   req.body.creator=req.user.profile._id
-  Athlete.findById(req.params.athleteid)
+  Athlete.findById(req.params.athleteId)
   .then(athlete => {
     athlete.comments.push(req.body)
     athlete.save()
@@ -84,6 +93,25 @@ function createComment(req, res) {
   })
 }
 
+function deleteComment(req, res) {
+  Athlete.findById(req.params.athleteId)
+  .then(athlete => {
+    athlete.comments.remove(req.params.commentId)
+    athlete.save()
+    .then(() => {
+      res.redirect(`/athletes/${athlete._id}`)
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/athletes')
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/athletes')
+  })
+}
+
 
 export {
   create,
@@ -92,4 +120,5 @@ export {
   newAthlete as new,
   deleteAthlete as delete,
   createComment,
+  deleteComment,
 }

@@ -16,6 +16,7 @@ router.post('/:athleteId/comments', athletesCtrl.createComment)
 
 router.delete('/:athleteId', isLoggedIn, athletesCtrl.delete)
 
+router.delete('/:athleteId/comments/:commentId', isLoggedIn, athletesCtrl.deleteComment)
 
 
 export { router }

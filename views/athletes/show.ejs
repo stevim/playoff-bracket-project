@@ -33,6 +33,7 @@
           <tr>
             <td><%= comment.createdAt.toLocaleDateString() %></td>
             <td><%= comment.content %></td>
+
             <td>-<%= comment.creator.name %></td>
             <% if (comment.creator.equals(user?.profile._id)) { %>
             <td>
