@@ -19,19 +19,16 @@
             <th>Favourite Teams:</th>
             <th></th>
           </tc>
-          <!-- <tc>
-            <th>Favourite Athletes:</th>
-            <th></th>
-          </tc> -->
         </thead>
         <tbody>
-          <% page.favTeams.forEach(favTeam => { %>
+          <% page.favTeams.forEach(team => { %>
             <tc>
               <tr>
-                <td><%= favTeam.name %></td>
+                <td><%= team.name %></td>
+                <td><a class="team-btn" href="/teams/<%= team._id %>">Look at this team</a></td>
                 <% if (page.creator.equals(user?.profile._id)) { %>
                 <td>
-                  <form action="/pages/<%= page._id %>/teams/<%= favTeam._id %>?_method=DELETE" method="POST">
+                  <form action="/pages/<%= page._id %>/teams/<%= team._id %>?_method=DELETE" method="POST">
                     <button>🗑️</button>
                   </form>
                 </td>

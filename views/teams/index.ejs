@@ -1,0 +1,37 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/teams/index.css" />
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <table id="team-list">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% teams.forEach((team) => { %>
+      <tr>
+        <td><%= team.name %></td>
+        <td><a class="team-btn" href="/teams/<%= team._id %>">Look at this team</a></td>
+        <td>
+          <form action="/teams/<%= team._id %>?_method=DELETE" method="POST">
+            <button type="submit">X</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <div id="add-team-div">
+    <a id="add-team" href="/teams/new">
+      <h3>Add Team</h3>
+    </a>
+
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

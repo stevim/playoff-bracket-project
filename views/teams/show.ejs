@@ -1,5 +1,5 @@
 <%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/athletes/show.css" />
+<link rel="stylesheet" href="/stylesheets/teams/show.css" />
 <%- include('../partials/nav') %>
 
 <main>
@@ -9,13 +9,13 @@
 </main>
 <% if (user) { %>
 <h2>Comments</h2>
-  <% if (athlete.comments.length) { %>
+  <% if (team.comments.length) { %>
     <table>
       <thead>
 
       </thead>
       <tbody>
-        <% athlete.comments.forEach(function(comment) { %>
+        <% team.comments.forEach(function(comment) { %>
           <tr>
             <td><%= comment.content %></td>
             
@@ -23,7 +23,7 @@
             <% if (comment.creator.equals(user?.profile._id)) { %>
               <td>-<%= comment.createdAt.toLocaleDateString() %></td>
               <td>
-                <form action="/athletes/<%= athlete._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                <form action="/teams/<%= team._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
                   <button>🗑️</button>
                 </form>
               </td>
@@ -37,11 +37,11 @@
     </table>
   <% } %>
   <form 
-    id="add-ath-com-form"
-    action="/athletes/<%= athlete._id %>/comments"
+    id="add-team-com-form"
+    action="/teams/<%= team._id %>/comments"
     method="POST"
   >
-    <label for="content-textarea">Why are you a fan of <%= athlete.name %></label>
+    <label for="content-textarea">Why are you a fan of <%= team.name %></label>
     <br>
     <textarea name="content" id="content-textarea"></textarea>
     <button type="submit">Add</button>
