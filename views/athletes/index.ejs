@@ -7,7 +7,7 @@
   <table id="athlete-list">
     <thead>
       <tr>
-        <th>Create Athlete</th>
+        <th></th>
         <th></th>
         <th></th>
       </tr>
@@ -15,8 +15,8 @@
     <tbody>
       <% athletes.forEach((athlete) => { %>
       <tr>
-        <td><%= athlete.title %></td>
-        <td><a href="/athletes/<%= athlete._id %>">Look at this athlete</a></td>
+        <td><% console.log(athlete)%><%= athlete.name %></td>
+        <td><a class="athlete-btn" href="/athletes/<%= athlete._id %>">Look at this athlete</a></td>
         <td>
           <form action="/athletes/<%= athlete._id %>?_method=DELETE" method="POST">
             <button type="submit">X</button>
