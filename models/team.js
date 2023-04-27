@@ -7,7 +7,10 @@ const teamSchema = new Schema({
     type: String,
     required: true
   },
-  logo: String
+  reason: {
+    type: String,
+    required: true
+  },
 }, {
     timestamps: true
 })

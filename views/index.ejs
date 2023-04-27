@@ -3,7 +3,7 @@
 <%- include('./partials/nav') %>
 
 <main>
-  <h1>Welcome to Sports Page, <%= user ? user.profile.name : "Guest" %></h1>
+  <h1>Welcome to Sports Page <%= user ? user.profile.name : '' %></h1>
   <% if (user?.profile.avatar) { %>
     <div>
       <img
@@ -12,6 +12,14 @@
       />
     </div>
   <% } %>
+  <h2>
+    <% if (!user) { %>
+      <p>Login to get started</p>
+      <p>Feel free to browse through other user's profiles in the mean time</p>
+      <% } else { %>
+        Click 'CREATE PROFILE' to create your own profile
+      <% } %>
+  </h2>
 </main>
 
 <%- include('./partials/footer') %>

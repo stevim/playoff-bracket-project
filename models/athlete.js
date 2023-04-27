@@ -6,6 +6,10 @@ const athleteSchema = new Schema({
   name: {
     type: String,
     required: true
+  },
+  reason: {
+    type: String,
+    required: true
   }
 }, {
     timestamps: true

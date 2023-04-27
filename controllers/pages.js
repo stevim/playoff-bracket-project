@@ -3,9 +3,7 @@ import { Team } from "../models/team.js"
 import { Athlete } from "../models/athlete.js"
 
 function newPage(req, res) {
-  res.render('pages/new', {
-    title: 'Add Page'
-  })
+  res.render('pages/new')
 }
 
 function create(req, res) {
