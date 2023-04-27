@@ -90,6 +90,21 @@
     </form>
   <% } %>
   
+  <% if (page.creator.equals(user?.profile._id)) { %>
+    
+    <h3>Why is <select name="athleteId">
+      <% athletes.forEach(athlete => { %>
+        <option id="athlete-sel-btn" value="<%= athlete._id %>"><%= athlete.name %></option>
+      <% }) %>
+    </select> a favourite?</h3>
+    <form class="add-fav-form" action="/pages/<%= page._id %>/athletes" method="POST">
+      <textarea name="reason" id="athlete-reason"></textarea>
+      <button type="submit">Add Reason</button>
+    </form>
+
+
+
+  <% } %>
   <% if (user) { %>
   <h2>Comments</h2>
   <form 
