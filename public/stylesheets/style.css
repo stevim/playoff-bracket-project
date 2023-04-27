@@ -15,12 +15,15 @@ body {
 
 nav {
   background-color: #f6f6f6;
+  flex-direction: row;
   color: #1a1a1a;
   display: flex;
   align-items: center;
   padding: 10px;
   min-height: 60px;
   gap: 10px;
+  background-color: black;
+  justify-content: space-between;
 }
 
 .nav-bar-link {

@@ -26,7 +26,7 @@ function index(req, res) {
   .then(pages => {
     res.render('pages/index', {
       pages: pages,
-      title: 'Page List'
+      title: 'Sports'
     })
   })
   .catch(err => {

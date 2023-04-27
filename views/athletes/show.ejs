@@ -7,40 +7,32 @@
     <%= title %>
   </h1>
 </main>
-<% if (user) { %>
 <h2>Comments</h2>
-  <% if (athlete.comments.length) { %>
-    <table>
-      <thead>
-
-      </thead>
-      <tbody>
-        <% athlete.comments.forEach(function(comment) { %>
-          <tr>
-            <td><%= comment.content %></td>
-            
-            <td>-<%= comment.creator.name %></td>
-            <% if (comment.creator.equals(user?.profile._id)) { %>
-              <td>-<%= comment.createdAt.toLocaleDateString() %></td>
-              <td>
-                <form action="/athletes/<%= athlete._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                  <button>🗑️</button>
-                </form>
-              </td>
-            <% } %>
-          </tr>
-        <% }) %>
+<% if (athlete.comments.length) { %>
+  <table>
+    <tbody>
+      <% athlete.comments.forEach(function(comment) { %>
         <tr>
-          <td colspan="2"></td>
+          <td>"<%= comment.content %>"</td>
+          <td>-<%= comment.creator.name %></td>
+          <% if (comment.creator.equals(user?.profile._id)) { %>
+            <td>-<%= comment.createdAt.toLocaleDateString() %></td>
+            <td>
+              <form action="/athletes/<%= athlete._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+              <button>🗑️</button>
+              </form>
+            </td>
+          <% } %>
         </tr>
-      </tbody>
-    </table>
-  <% } %>
-  <form 
-    id="add-ath-com-form"
-    action="/athletes/<%= athlete._id %>/comments"
-    method="POST"
-  >
+      <% }) %>
+      <tr>
+        <td colspan="2"></td>
+      </tr>
+    </tbody>
+  </table>
+<% } %>
+<% if (user) { %>
+  <form id="add-ath-com-form" action="/athletes/<%= athlete._id %> comments" method="POST">
     <label for="content-textarea">Why are you a fan of <%= athlete.name %></label>
     <br>
     <textarea name="content" id="content-textarea"></textarea>

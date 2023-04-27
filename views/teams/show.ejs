@@ -7,45 +7,37 @@
     <%= title %>
   </h1>
 </main>
-<% if (user) { %>
 <h2>Comments</h2>
-  <% if (team.comments.length) { %>
-    <table>
-      <thead>
-
-      </thead>
-      <tbody>
-        <% team.comments.forEach(function(comment) { %>
-          <tr>
-            <td><%= comment.content %></td>
-            
-            <td>-<%= comment.creator.name %></td>
-            <% if (comment.creator.equals(user?.profile._id)) { %>
-              <td>-<%= comment.createdAt.toLocaleDateString() %></td>
-              <td>
-                <form action="/teams/<%= team._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                  <button>🗑️</button>
-                </form>
-              </td>
-            <% } %>
-          </tr>
-        <% }) %>
-        <tr>
-          <td colspan="2"></td>
-        </tr>
-      </tbody>
-    </table>
-  <% } %>
-  <form 
-    id="add-team-com-form"
-    action="/teams/<%= team._id %>/comments"
-    method="POST"
-  >
-    <label for="content-textarea">Why are you a fan of <%= team.name %></label>
-    <br>
-    <textarea name="content" id="content-textarea"></textarea>
-    <button type="submit">Add</button>
-  </form>
+<% if (team.comments.length) { %>
+<table>
+  <tbody>
+    <% team.comments.forEach(function(comment) { %>
+      <tr>
+        <td>"<%= comment.content %>"</td>
+        <td>-<%= comment.creator.name %></td>
+        <% if (comment.creator.equals(user?.profile._id)) { %>
+          <td>-<%= comment.createdAt.toLocaleDateString() %></td>
+          <td>
+            <form action="/teams/<%= team._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+              <button>🗑️</button>
+            </form>
+          </td>
+        <% } %>
+      </tr>
+    <% }) %>
+    <tr>
+      <td colspan="2"></td>
+    </tr>
+  </tbody>
+</table>
+<% } %>
+<% if (user) { %>
+<form id="add-team-com-form" action="/teams/<%= team._id %>/comments" method="POST">
+  <label for="content-textarea">Why are you a fan of the <%= team.name %></label>
+  <br>
+  <textarea name="content" id="content-textarea"></textarea>
+  <button type="submit">Add</button>
+</form>
 <% } %>
 
 <%- include('../partials/footer') %>
