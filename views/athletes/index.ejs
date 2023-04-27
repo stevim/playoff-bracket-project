@@ -1,0 +1,31 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/athletes/index.css" />
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <table id="athlete-list">
+    <thead>
+      <tr>
+        <th>Create Athlete</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% athletes.forEach((athlete) => { %>
+      <tr>
+        <td><%= athlete.title %></td>
+        <td><a href="/athletes/<%= athlete._id %>">Look at this athlete</a></td>
+        <td>
+          <form action="/athletes/<%= athlete._id %>?_method=DELETE" method="POST">
+            <button type="submit">X</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</main>
+
+<%- include('../partials/footer') %>

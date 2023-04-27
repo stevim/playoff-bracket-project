@@ -36,7 +36,7 @@
                 <% if (page.creator.equals(user?.profile._id)) { %>
                 <td>
                   <form action="/pages/<%= page._id %>/teams/<%= favTeam._id %>?_method=DELETE" method="POST">
-                    <button>X</button>
+                    <button>🗑️</button>
                   </form>
                 </td>
                 <% } %>
@@ -51,7 +51,7 @@
                 <% if (page.creator.equals(user?.profile._id)) { %>
                 <td>
                   <form action="/pages/<%= page._id %>/athletes/<%= favAthlete._id %>?_method=DELETE" method="POST">
-                    <button>X</button>
+                    <button>🗑️</button>
                   </form>
                 </td>
                 <% } %>
@@ -119,7 +119,7 @@
               <% if (comment.creator.equals(user?.profile._id)) { %>
               <td>
                 <form action="/pages/<%= page._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                  <button>X</button>
+                  <button>🗑️</button>
                 </form>
               </td>
               <% } %>

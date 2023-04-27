@@ -14,6 +14,19 @@ function newAthlete(req,res) {
   })
 }
 
+function index(req, res) {
+  Athlete.find({})
+  .then(athletes => {
+    res.render('athletes/index', {
+      athletes: athletes,
+      title: 'Athletes'
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/athletes')
+  })
+}
 
 function create(req,res) {
   Athlete.create(req.body)
@@ -28,5 +41,6 @@ function create(req,res) {
 
 export {
   create,
+  index,
   newAthlete as new,
 }
