@@ -5,18 +5,14 @@
 <main>
   <h1><%= title %></h1>
   <table id="page-list">
-    <thead>
-      <tr>
-        <th>Creator</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
     <tbody>
       <% pages.forEach((page) => { %>
       <tr>
-        <td><%= page.title %></td>
-        <td><a href="/pages/<%= page._id %>">Check out the Page</a></td>
+        <td>
+          <a href="/pages/<%= page._id %>">
+            <img src="/assets/<%= page.title.toLowerCase() %>/<%= page.title.toLowerCase() %>-icon.png" height="100" width="100">
+          </a>
+        </td>
         <td>
           <form action="/pages/<%= page._id %>?_method=DELETE" method="POST">
             <button type="submit">X</button>

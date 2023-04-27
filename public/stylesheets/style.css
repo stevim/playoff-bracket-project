@@ -15,7 +15,6 @@ body {
 
 nav {
   background-color: #f6f6f6;
-  flex-direction: row;
   color: #1a1a1a;
   display: flex;
   align-items: center;
@@ -24,11 +23,6 @@ nav {
   gap: 10px;
   background-color: black;
   justify-content: space-between;
-}
-
-.nav-bar-link {
-  margin: 0 10px;
-  color: red;
 }
 
 main {
@@ -40,8 +34,4 @@ main {
 
 .right {
   margin-left: auto;
-}
-
-.logout-btn {
-  
 }

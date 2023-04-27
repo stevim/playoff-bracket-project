@@ -68,11 +68,8 @@
     </div>
   </section>
   <% if (page.creator.equals(user?.profile._id)) { %>
-    <form
-      id="add-teams-to-fav" 
-      action="/pages/<%= page._id %>/teams"
-      method="POST"
-    >
+    <form id="add-teams-to-fav" action="/pages/<%= page._id %>/teams" method="POST">
+      <label>Make sure you have selected a <%= title %> team</label>
       <select name="teamId">
         <% teams.forEach(team => { %>
           <option value="<%= team._id %>"><%= team.name %></option>
@@ -80,12 +77,8 @@
       </select>
       <button type="submit">Add</button>
     </form>
-    
-    <form 
-      id="add-athletes-to-fav" 
-      action="/pages/<%= page._id %>/athletes" 
-      method="POST"
-    >
+    <form id="add-athletes-to-fav" action="/pages/<%= page._id %>/athletes" method="POST">
+      <label>Make sure you have selected a <%= title %> player</label>
       <select name="athleteId">
         <% athletes.forEach(athlete => { %>
           <option value="<%= athlete._id %>"><%= athlete.name %></option>
@@ -94,19 +87,6 @@
       <button type="submit">Add</button>
     </form>
   <% } %>
-  
-  <!-- <% if (page.creator.equals(user?.profile._id)) { %>
-    
-    <form class="add-fav-form" action="/pages/<%= page._id %>/athletes" method="POST">
-      <h3>Why is <select name="athleteId">
-        <% athletes.forEach(athlete => { %>
-          <option id="athlete-sel-btn" value="<%= athlete._id %>"><%= athlete.name %></option>
-        <% }) %>
-      </select> a favourite?</h3>
-      <textarea name="reason" id="athlete-reason"></textarea>
-      <button type="submit">Add Reason</button>
-    </form>
-  <% } %> -->
   <% if (user) { %>
   <h2>Comments</h2>
   <form 
