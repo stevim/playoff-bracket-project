@@ -9,4 +9,6 @@ router.get('/index', athletesCtrl.index)
 
 router.post('/', athletesCtrl.create)
 
+router.get('/:athleteId', athletesCtrl.show)
+
 export { router }

@@ -39,8 +39,24 @@ function create(req,res) {
   })
 }
 
+function show(req, res) {
+  Athlete.findById(req.params.athleteId)
+  .then(athlete => {
+    res.render('athletes/show', {
+      athlete,
+      title: athlete.name,
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/pages')
+  })
+}
+
+
 export {
   create,
   index,
+  show,
   newAthlete as new,
 }
