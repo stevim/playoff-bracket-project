@@ -16,23 +16,19 @@
       <table>
         <thead>
           <tc>
-            <th>Favourite Teams and Athletes:</th>
+            <th>Favourite Teams:</th>
             <th></th>
           </tc>
           <!-- <tc>
             <th>Favourite Athletes:</th>
             <th></th>
           </tc> -->
-          <tc>
-            <th>Reason:</th>
-          </tc>
         </thead>
         <tbody>
           <% page.favTeams.forEach(favTeam => { %>
             <tc>
               <tr>
                 <td><%= favTeam.name %></td>
-                <td><%= favTeam.reason %></td>
                 <% if (page.creator.equals(user?.profile._id)) { %>
                 <td>
                   <form action="/pages/<%= page._id %>/teams/<%= favTeam._id %>?_method=DELETE" method="POST">
@@ -43,14 +39,26 @@
               </tr>
             </tc>
           <% }) %>
-          <% page.favAthletes.forEach(favAthlete => { %>
+          </tbody>
+      </table>
+    </div>
+    <div>
+      <table>
+        <thead>
+          <tc>
+            <th>Favourite Athletes:</th>
+            <th></th>
+          </tc>
+        </thead>
+        <tbody>
+          <% page.favAthletes.forEach(athlete => { %>
             <tc>
               <tr>
-                <td><%= favAthlete.name %></td>
-                <td><%= favAthlete.reason %></td>
+                <td><%= athlete.name %></td>
+                <td><a class="athlete-btn" href="/athletes/<%= athlete._id %>">Look at this athlete</a></td>
                 <% if (page.creator.equals(user?.profile._id)) { %>
                 <td>
-                  <form action="/pages/<%= page._id %>/athletes/<%= favAthlete._id %>?_method=DELETE" method="POST">
+                  <form action="/pages/<%= page._id %>/athletes/<%= athlete._id %>?_method=DELETE" method="POST">
                     <button>🗑️</button>
                   </form>
                 </td>

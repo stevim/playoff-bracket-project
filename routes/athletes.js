@@ -1,5 +1,6 @@
 import { Router } from "express"
 import * as athletesCtrl from '../controllers/athletes.js'
+import { isLoggedIn } from "../middleware/middleware.js"
 
 const router = Router()
 
@@ -7,8 +8,14 @@ router.get('/new', athletesCtrl.new)
 
 router.get('/index', athletesCtrl.index)
 
+router.get('/:athleteId', athletesCtrl.show)
+
 router.post('/', athletesCtrl.create)
 
-router.get('/:athleteId', athletesCtrl.show)
+router.post('/:athleteId/comments', athletesCtrl.createComment)
+
+router.delete('/:athleteId', isLoggedIn, athletesCtrl.delete)
+
+
 
 export { router }

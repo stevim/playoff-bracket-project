@@ -1,5 +1,5 @@
 <%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/pages/show.css" />
+<link rel="stylesheet" href="/stylesheets/athletes/show.css" />
 <%- include('../partials/nav') %>
 
 <main>
@@ -7,5 +7,50 @@
     <%= title %>
   </h1>
 </main>
+<% if (user) { %>
+<h2>Comments</h2>
+  <form 
+    id="add-ath-com-form"
+    action="/athletes/<%= athlete._id %>/comments"
+    method="POST"
+  >
+    <% console.log(athlete._id) %>
+    <label for="content-textarea">Comment:</label>
+    <textarea name="content" id="content-textarea"></textarea>
+    <button type="submit">Add Comment</button>
+  </form>
+  <% if (athlete.comments.length) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Comments</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% athlete.comments.forEach(function(comment) { %>
+          <tr>
+            <td><%= comment.createdAt.toLocaleDateString() %></td>
+            <td><%= comment.content %></td>
+            <td>-<%= comment.creator.name %></td>
+            <% if (comment.creator.equals(user?.profile._id)) { %>
+            <td>
+              <form action="/athletes/<%= athlete._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                <button>🗑️</button>
+              </form>
+            </td>
+            <% } %>
+          </tr>
+        <% }) %>
+        <tr>
+          <td colspan="2"></td>
+        </tr>
+      </tbody>
+    </table>
+  <% } else { %>
+    <h3>Leave a comment!</h3>
+  <% } %>
+<% } %>
 
 <%- include('../partials/footer') %>
