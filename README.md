@@ -26,8 +26,9 @@ Planning materials can be found [here](https://trello.com/b/4ix6Z913/playoff-bra
 
 
 ## Attributions
-* Background Images from [SVGRepo.com](https://www.svgrepo.com/)
+* Background Images, Logout Icon, and Delete Icon from [SVGRepo.com](https://www.svgrepo.com/)
 * Sports Icons from [VHV.rs](https://www.vhv.rs/)
+* Favicon from [Favicon.io](https://favicon.io/emoji-favicons/trophy/)
 
 
 ## Icebox (Next Steps)
