@@ -52,7 +52,7 @@
         </table>
       </div>
     </section>
-    <% if (page.creator.equals(user?.profile._id)) { %>
+    <% if (user) { %>
       <form id="add-teams-to-fav" action="/pages/<%= page._id %>/teams" method="POST">
         <select name="teamId">
           <option value="select" disabled selected>select a <%= title.toLowerCase() %> team</option>
