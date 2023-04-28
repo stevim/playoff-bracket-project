@@ -128,3 +128,11 @@ h1 {
   align-items: center;
   justify-content: center;
 }
+
+.comment-btn {
+  background-color: green;
+  color: white;
+  border-color: rgb(4, 113, 4);
+  font-weight: 800;
+  font-size: larger;
+}
