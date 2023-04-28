@@ -3,7 +3,7 @@
 <%- include('./partials/nav') %>
 
 <main>
-  <h1>Welcome to Sports Page <%= user ? user.profile.name : '' %></h1>
+  <h1>Welcome to Sports Page</h1>
   <% if (user?.profile.avatar) { %>
     <div>
       <img
@@ -17,7 +17,7 @@
       <p>Login to get started</p>
       <p>Navigate to 'SPORTS' to check out some teams and athletes</p>
     <% } else { %>
-      Navigate to 'SPORTS' to create some teams and athletes
+      Navigate to 'ALL TEAMS' or 'ALL ATHLETES' to create some teams and athletes
     <% } %>
   </h2>
 </main>

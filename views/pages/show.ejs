@@ -13,7 +13,7 @@
           </a>
         <% } %>
       </div>
-      <div>
+      <div id="fav-teams-div">
         <h3 class="<%= page.title.toLowerCase() %>-text">Favourite Teams:</h3>
         <table class="<%= page.title.toLowerCase() %>-text">
           <tbody>
@@ -32,7 +32,7 @@
           </tbody>
         </table>
       </div>
-      <div>
+      <div id="fav-athletes-div">
         <h3 class="<%= page.title.toLowerCase() %>-text">Favourite Athletes:</h3>
         <table class="<%= page.title.toLowerCase() %>-text">
           <tbody>
@@ -60,7 +60,7 @@
             <option value="<%= team._id %>"><%= team.name %></option>
           <% }) %>
         </select>
-        <button type="submit">Add</button>
+        <button id="<%= page.title.toLowerCase() %>-btn" type="submit">ADD</button>
       </form>
       <form id="add-athletes-to-fav" action="/pages/<%= page._id %>/athletes" method="POST">
         <select name="athleteId">
@@ -69,7 +69,7 @@
             <option value="<%= athlete._id %>"><%= athlete.name %></option>
           <% }) %>
         </select>
-        <button type="submit">Add</button>
+        <button id="<%= page.title.toLowerCase() %>-btn" type="submit">ADD</button>
       </form>
     <% } %>
     <% if (user) { %>
