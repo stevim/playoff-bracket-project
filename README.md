@@ -23,6 +23,7 @@ Planning materials can be found [here](https://trello.com/b/4ix6Z913/playoff-bra
 * CSS
 * Git
 * Docker
+* Passport
 
 
 ## Attributions
