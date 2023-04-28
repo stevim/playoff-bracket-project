@@ -60,7 +60,7 @@
   <% if (page.creator.equals(user?.profile._id)) { %>
     <form id="add-teams-to-fav" action="/pages/<%= page._id %>/teams" method="POST">
       <select name="teamId">
-        <option value="select" selected>select a <%= title.toLowerCase() %> team</option>
+        <option value="select" disabled selected>select a <%= title.toLowerCase() %> team</option>
         <% teams.forEach(team => { %>
           <option value="<%= team._id %>"><%= team.name %></option>
         <% }) %>
@@ -69,7 +69,7 @@
     </form>
     <form id="add-athletes-to-fav" action="/pages/<%= page._id %>/athletes" method="POST">
       <select name="athleteId">
-        <option value="select" selected>select a <%= title.toLowerCase() %> athlete</option>
+        <option value="select" disabled selected>select a <%= title.toLowerCase() %> athlete</option>
         <% athletes.forEach(athlete => { %>
           <option value="<%= athlete._id %>"><%= athlete.name %></option>
         <% }) %>

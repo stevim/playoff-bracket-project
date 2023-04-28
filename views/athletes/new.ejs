@@ -4,7 +4,7 @@
 
 <main>
 	<h1><%= title %></h1>
-  <p>Please first ensure that the Athlete is not in the dropdown
+  <p>Check if the athlete has already been created: 
     <select class="add-athlete-dropdown">
       <% athletes.forEach(function(athlete) { %>
         <option><%= athlete.name %></option>
@@ -13,7 +13,7 @@
   </p>
   <form id="add-athlete-form" action="/athletes" method="POST">
     <label for="name-input">Name:</label>
-    <input type="text" name="name" id="name-input">
+    <input type="text" name="name" id="name-input" autocomplete="off">
     <button type="submit">Add Athlete</button>
   </form>
 </main>

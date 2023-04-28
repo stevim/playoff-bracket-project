@@ -1,5 +1,5 @@
 html * {
-  border: 1px solid red;
+
   box-sizing: border-box;
 }
 
@@ -71,4 +71,9 @@ h1 {
 
 .add-link {
   color: white;
+}
+
+.logout-btn {
+  border-radius: 25px;
+  font-size: large;
 }

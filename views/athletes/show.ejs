@@ -13,30 +13,30 @@
     <tbody>
       <% athlete.comments.forEach(comment => { %>
         <tr>
-          <td>"<%= comment.content %>"</td>
-          <td>-<%= comment.creator.name %></td>
-          <% if (comment.creator.equals(user?.profile._id)) { %>
-            <td>-<%= comment.createdAt.toLocaleDateString() %></td>
-            <td>
+          <td>
+            <% if (comment.creator.equals(user?.profile._id)) { %>
               <form action="/athletes/<%= athlete._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-              <button>🗑️</button>
+                <button>🗑️</button>
               </form>
-            </td>
-          <% } %>
+              <% } %>
+          </td>
+          <td class="date-text">-<%= comment.createdAt.toLocaleDateString() %></td>
+          <td class="comment-text">
+            <textarea><%= comment.content %></textarea></td>
+            <td class="creator-text">-<%= comment.creator.name %></td>
         </tr>
       <% }) %>
-      <tr>
-        <td colspan="2"></td>
-      </tr>
     </tbody>
   </table>
 <% } %>
 <% if (user) { %>
-  <form id="add-ath-com-form" action="/athletes/<%= athlete._id %> comments" method="POST">
+  <form id="add-ath-com-form" action="/athletes/<%= athlete._id %>/comments" method="POST">
     <label for="content-textarea">Why are you a fan of <%= athlete.name %></label>
     <br>
-    <textarea name="content" id="content-textarea"></textarea>
-    <button type="submit">Add</button>
+    <div class="add-comment-form">
+      <textarea name="content" id="content-textarea"></textarea>
+      <button type="submit">Add</button>
+    </div>
   </form>
 <% } %>
 

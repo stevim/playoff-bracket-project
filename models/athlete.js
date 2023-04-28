@@ -8,7 +8,9 @@ const commentSchema = new Schema({
     required: true,
   },
   creator: {
-    type: Schema.Types.ObjectId, ref: 'Profile'
+    type: Schema.Types.ObjectId, 
+    ref: 'Profile',
+    required: true,
   }
 }, {
   timestamps: true,
@@ -20,7 +22,9 @@ const athleteSchema = new Schema({
     required: true
   },
   creator: {
-    type: Schema.Types.ObjectId, ref: 'Profile'
+    type: Schema.Types.ObjectId, 
+    ref: 'Profile',
+    required: true,
   },
   comments: [commentSchema],
 }, {
