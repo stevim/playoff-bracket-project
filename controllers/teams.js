@@ -16,9 +16,10 @@ function newTeam(req,res) {
 
 function index(req, res) {
   Team.find({})
+  .populate('creator')
   .then(teams => {
     res.render('teams/index', {
-      teams: teams,
+      teams,
       title: 'Teams'
     })
   })
@@ -29,6 +30,7 @@ function index(req, res) {
 }
 
 function create(req,res) {
+  req.body.creator=req.user.profile._id
   Team.create(req.body)
   .then(team => {
     res.redirect('/teams/new')

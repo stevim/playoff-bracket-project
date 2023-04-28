@@ -5,33 +5,28 @@
 <main>
   <h1><%= title %></h1>
   <table id="team-list">
-    <thead>
-      <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
     <tbody>
       <% teams.forEach((team) => { %>
       <tr>
-        <td><%= team.name %></td>
-        <td><a class="team-btn" href="/teams/<%= team._id %>">Look at this team</a></td>
-        <td>
-          <form action="/teams/<%= team._id %>?_method=DELETE" method="POST">
-            <button type="submit">X</button>
-          </form>
-        </td>
+        <td><a class="ta-link" href="/teams/<%= team._id %>"><%= team.name %></a></td>
+        <% if (team.creator.equals(user?.profile._id)) { %>
+          <td>
+            <form action="/teams/<%= team._id %>?_method=DELETE" method="POST">
+              <button type="submit">X</button>
+            </form>
+          </td>
+        <% } %>
       </tr>
       <% }) %>
     </tbody>
   </table>
-  <div id="add-team-div">
-    <a id="add-team" href="/teams/new">
+  <% if (user) { %>
+  <div>
+    <a class="add-link" href="/teams/new">
       <h3>Add Team</h3>
     </a>
-
   </div>
+  <% } %>
 </main>
 
 <%- include('../partials/footer') %>

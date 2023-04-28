@@ -16,9 +16,10 @@ function newAthlete(req,res) {
 
 function index(req, res) {
   Athlete.find({})
+  .populate('creator')
   .then(athletes => {
     res.render('athletes/index', {
-      athletes: athletes,
+      athletes,
       title: 'Athletes'
     })
   })
@@ -29,6 +30,7 @@ function index(req, res) {
 }
 
 function create(req,res) {
+  req.body.creator=req.user.profile._id
   Athlete.create(req.body)
   .then(athlete => {
     res.redirect('/athletes/new')
@@ -48,7 +50,7 @@ function show(req, res) {
         path: 'creator',
         model: 'Profile'
       }
-    }
+    } 
   ])
   .then(athlete => {
     res.render('athletes/show', {

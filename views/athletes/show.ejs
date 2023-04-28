@@ -11,7 +11,7 @@
 <% if (athlete.comments.length) { %>
   <table>
     <tbody>
-      <% athlete.comments.forEach(function(comment) { %>
+      <% athlete.comments.forEach(comment => { %>
         <tr>
           <td>"<%= comment.content %>"</td>
           <td>-<%= comment.creator.name %></td>

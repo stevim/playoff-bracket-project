@@ -19,6 +19,9 @@ const teamSchema = new Schema({
     type: String,
     required: true
   },
+  creator: {
+    type: Schema.Types.ObjectId, ref: 'Profile'
+  },
   comments: [commentSchema],
 }, {
     timestamps: true

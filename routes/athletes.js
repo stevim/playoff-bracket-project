@@ -10,9 +10,9 @@ router.get('/index', athletesCtrl.index)
 
 router.get('/:athleteId', athletesCtrl.show)
 
-router.post('/', athletesCtrl.create)
+router.post('/', isLoggedIn, athletesCtrl.create)
 
-router.post('/:athleteId/comments', athletesCtrl.createComment)
+router.post('/:athleteId/comments', isLoggedIn, athletesCtrl.createComment)
 
 router.delete('/:athleteId', isLoggedIn, athletesCtrl.delete)
 

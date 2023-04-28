@@ -14,10 +14,12 @@
     <a class="nav-bar-link" href="/athletes/index">
       ALL ATHLETES
     </a>
-    <% if (user) { %>
+    <% if (user?.profile.equals('644987e456f0916e642d8ec1')) { %>
       <a class="nav-bar-link" href="/pages/new">
         CREATE PROFILE 
       </a>
+    <% } %>
+    <% if (user) { %>
       <a href="/auth/logout" class="right">
         <button class="logout-btn" type="submit">Logout</button>
       </a>

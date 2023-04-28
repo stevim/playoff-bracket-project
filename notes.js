@@ -15,3 +15,6 @@ href="/pages" class=<%= title === 'All Pages' ? 'active' : '' %>
 
 <% pages.forEach((page) => { %>
 <% }) %>
+
+<% if (athlete.creator.equals(user?.profile._id)) { %>
+<% } %>

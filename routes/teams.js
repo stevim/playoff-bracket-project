@@ -10,9 +10,9 @@ router.get('/index', teamsCtrl.index)
 
 router.get('/:teamId', teamsCtrl.show)
 
-router.post('/', teamsCtrl.create)
+router.post('/', isLoggedIn, teamsCtrl.create)
 
-router.post('/:teamId/comments', teamsCtrl.createComment)
+router.post('/:teamId/comments', isLoggedIn, teamsCtrl.createComment)
 
 router.delete('/:teamId', isLoggedIn, teamsCtrl.delete)
 

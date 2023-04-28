@@ -162,12 +162,12 @@ function addToFavTeams(req, res) {
     })
     .catch(err => {
       console.log(err)
-      res.redirect('/pages')
+      res.redirect(`/pages`)
     })
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/pages')
+    res.redirect(`/pages/${page._id}`)
   })
 }
 

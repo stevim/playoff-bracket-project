@@ -5,33 +5,28 @@
 <main>
   <h1><%= title %></h1>
   <table id="athlete-list">
-    <thead>
-      <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
     <tbody>
-      <% athletes.forEach((athlete) => { %>
+      <% athletes.forEach(athlete => { %>
       <tr>
-        <td><%= athlete.name %></td>
-        <td><a class="athlete-btn" href="/athletes/<%= athlete._id %>">Look at this athlete</a></td>
-        <td>
-          <form action="/athletes/<%= athlete._id %>?_method=DELETE" method="POST">
-            <button type="submit">X</button>
-          </form>
-        </td>
+        <td><a class="ta-link" href="/athletes/<%= athlete._id %>"><%= athlete.name %></a></td>
+        <% if (athlete.creator.equals(user?.profile._id)) { %>
+          <td>
+            <form action="/athletes/<%= athlete._id %>?_method=DELETE" method="POST">
+              <button type="submit">X</button>
+            </form>
+          </td>
+        <% } %>
       </tr>
       <% }) %>
     </tbody>
   </table>
-  <div id="add-athlete-div">
-    <a id="add-athlete" href="/athletes/new">
+  <% if(user) { %>
+  <div>
+    <a class="add-link" href="/athletes/new">
       <h3>Add Athlete</h3>
     </a>
-
   </div>
+  <% } %>
 </main>
 
 <%- include('../partials/footer') %>

@@ -1,0 +1,10 @@
+
+#sports-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+#sports-icons {
+  margin: 20px 20px;
+}

@@ -3,25 +3,21 @@
 <%- include('../partials/nav') %>
 
 <main>
-  <h1><%= title %></h1>
-  <table id="page-list">
-    <tbody>
-      <% pages.forEach((page) => { %>
-      <tr>
-        <td>
-          <a href="/pages/<%= page._id %>">
-            <img src="/assets/<%= page.title.toLowerCase() %>/<%= page.title.toLowerCase() %>-icon.png" height="100" width="100">
-          </a>
-        </td>
-        <td>
-          <form action="/pages/<%= page._id %>?_method=DELETE" method="POST">
-            <button type="submit">X</button>
-          </form>
-        </td>
-      </tr>
-      <% }) %>
-    </tbody>
-  </table>
+  <h1>Select a sport to get started</h1>
+  <div id="sports-list">
+    <% pages.forEach((page) => { %>
+    <div id="sports-icons">
+      <a href="/pages/<%= page._id %>">
+        <img src="/assets/<%= page.title.toLowerCase() %>/<%= page.title.toLowerCase() %>-icon.png" height="100" width="100">
+      </a>
+      <% if (user?.profile.equals('644987e456f0916e642d8ec1')) { %>
+      <form action="/pages/<%= page._id %>?_method=DELETE" method="POST">
+        <button type="submit">X</button>
+      </form>
+      <% } %>
+    </div>
+    <% }) %>
+  </div>
 </main>
 
 <%- include('../partials/footer') %>

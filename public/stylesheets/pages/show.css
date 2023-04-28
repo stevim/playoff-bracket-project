@@ -1,0 +1,87 @@
+main {
+  min-height: 1300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: black;
+}
+
+#soccer {
+  background-image: url('/assets/soccer/soccer-back.svg');
+  background-size: cover;
+  background-color: #43B05C;
+}
+
+.soccer-text {
+  background-color: #43B05C;
+}
+
+#basketball {
+  background-image: url('/assets/basketball/basketball-back.svg');
+  background-size: cover;
+  background-color: #F6BB42;
+}
+
+.basketball-text {
+  background-color: #F6BB42;
+}
+
+#baseball {
+  background-image: url('/assets/baseball/baseball-back.svg');
+  background-size: cover;
+  background-color: #B77729;
+}
+
+.baseball-text {
+  background-color: #B77729;
+}
+
+#hockey {
+  background-image: url('/assets/hockey/hockey-back.svg');
+  background-size: cover;
+  background-color: #85d6ff;
+}
+
+.hockey-text {
+  background-color: #85d6ff;
+}
+
+#football {
+  background-image: url('/assets/football/football-back.svg');
+  background-size: cover;
+  background-color: #9EC552;
+}
+
+.football-text {
+  background-color: #9EC552;
+}
+
+#tennis {
+  background-image: url('/assets/tennis/tennis-back.svg');
+  background-size: cover;
+  background-color: #43B05C;
+}
+
+.tennis-text {
+  background-color: #43B05C;
+}
+
+#golf {
+  background-image: url('/assets/golf/golf-back.svg');
+  background-size: cover;
+  background-color: #54B265;
+}
+
+.golf-text {
+  background-color: #54B265;
+}
+
+#motorsports {
+  background-image: url('/assets/motorsports/motorsports-back.svg');
+  background-size: cover;
+  background-color: #8f9c9e;
+}
+
+.motorsports-text {
+  background-color: #8f9c9e;
+}
