@@ -36,3 +36,4 @@ Planning materials can be found [here](https://trello.com/b/4ix6Z913/playoff-bra
 * Attach newly created teams and athletes to a specific sport
 * Add edit functionality for comments
 * Upgrade the visuals of the app
+* Amalgamate teams and athletes into one model so that the code will be much cleaner
