@@ -1,10 +1,10 @@
-![image](/public/assets/sportspage.png)
+![image](/public/assets/trashtalk.png)
 
-# SPORTSPAGE
+# TRASH TALK
 
-## Visit [SPORTSPAGE](https://sportspage.fly.dev)
+## Visit [TRASH TALK](https://trash-talk.fly.dev)
 
-SPORTSPAGE is an app that allows sports fanatics to login via their Google account and rep their favourite sports, teams, and athletes.
+TRASHTALK is an app that allows sports fanatics to login via their Google account and rep their favourite sports, teams, and athletes.
 
 Users can leave their thoughts on various sports, and other user's teams and athletes. Hype eachother up! Or start talking some trash!
 

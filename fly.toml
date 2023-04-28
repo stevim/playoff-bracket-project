@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for sportspage on 2023-04-28T04:01:14-04:00
+# fly.toml app configuration file generated for trash-talk on 2023-04-28T10:02:11-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "sportspage"
+app = "trash-talk"
 primary_region = "yyz"
 
 [env]
