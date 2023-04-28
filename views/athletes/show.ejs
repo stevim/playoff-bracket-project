@@ -14,7 +14,7 @@
             <td>
               <% if (comment.creator.equals(user?.profile._id)) { %>
                 <form action="/athletes/<%= athlete._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                  <button>🗑️</button>
+                  <button class="def-del-btn"><img src="/assets/icons/trash-icon.svg" height="25px" width="25px"</button>
                 </form>
                 <% } %>
             </td>
