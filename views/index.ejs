@@ -1,22 +1,19 @@
 <%- include('./partials/html-head') %>
 <%- include('./partials/nav') %>
 
-<main>
+<main id="index">
   <h1>Welcome to Trash Talk</h1>
   <% if (user?.profile.avatar) { %>
     <div>
-      <img
-        src="<%= user.profile.avatar %>"
-        alt="<%= user.profile.name %> avatar"
-      />
+      <img src="<%= user.profile.avatar %>" alt="<%= user.profile.name %> avatar"/>
     </div>
   <% } %>
-  <h2>
+  <h2 id="h2-idx">
     <% if (!user) { %>
       <p>Login to get started</p>
       <p>Navigate to 'SPORTS' to check out some teams and athletes</p>
     <% } else { %>
-      Navigate to 'ALL TEAMS' or 'ALL ATHLETES' to create some teams and athletes
+      Go to 'ALL TEAMS' or 'ALL ATHLETES' to start
     <% } %>
   </h2>
 </main>
