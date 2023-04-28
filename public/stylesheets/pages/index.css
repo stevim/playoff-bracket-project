@@ -6,4 +6,11 @@
 
 #sports-icons {
   margin: 20px 20px;
+  display: flex;
+  
+}
+
+#sports-del-btn {
+  background-color: #1a1a1a;
+  border-width: 0;
 }
