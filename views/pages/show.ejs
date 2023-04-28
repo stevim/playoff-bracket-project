@@ -9,7 +9,7 @@
       <div>
         <% if (user?.profile.equals('644987e456f0916e642d8ec1')) { %>
           <a href="/pages/<%= page._id %>/edit">
-            <button>Change Name</button>
+            <button class="change-name-btn">Change Name</button>
           </a>
         <% } %>
       </div>
@@ -91,6 +91,13 @@
                   <textarea><%= comment.content %></textarea>
                 </td>
                 <td class="creator-text">-<%= comment.creator.name %></td>
+                <td>
+                  <% if (comment.creator.equals(user?.profile._id)) { %>
+                    <a href="/pages/<%= page._id %>/edit">
+                      <button>Edit</button>
+                    </a>
+                  <% } %>
+                </td>
               </tr>
             <% }) %>
           </tbody>

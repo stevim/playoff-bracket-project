@@ -4,19 +4,10 @@
 
 <main>
   <h1><%= title %></h1>
-  <form 
-    id="new-form" 
-    action="/pages/<%= page._id %>?_method=PUT" 
-    method="POST"
-  >
+  <form id="new-form" action="/pages/<%= page._id %>?_method=PUT" method="POST">
     <label for="title-input">Title:</label>
-      <input 
-        type="text" 
-        name="title" 
-        value="<%= page.title %>" 
-        id="title-input"
-      >
-    <button class="edit-title-btn" type="submit">Edit Title</button>
+    <input type="text" name="title" value="<%= page.title %>" id="title-input">
+    <button class="change-name-btn" type="submit">Edit Title</button>
   </form>
 </main>
 
