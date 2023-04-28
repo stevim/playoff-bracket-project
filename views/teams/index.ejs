@@ -8,14 +8,14 @@
     <tbody>
       <% teams.forEach((team) => { %>
       <tr>
-        <td><a class="ta-link" href="/teams/<%= team._id %>"><%= team.name %></a></td>
         <% if (team.creator.equals(user?.profile._id)) { %>
           <td>
             <form action="/teams/<%= team._id %>?_method=DELETE" method="POST">
-              <button type="submit">X</button>
+              <button class="def-del-btn" type="submit"><img src="/assets/icons/trash-icon.svg" height="25px"></button>
             </form>
           </td>
         <% } %>
+        <td><a class="ta-link" href="/teams/<%= team._id %>"><%= team.name %></a></td>
       </tr>
       <% }) %>
     </tbody>

@@ -3,113 +3,109 @@
 <%- include('../partials/nav') %>
 
 <main id="<%= page.title.toLowerCase() %>">
-  <h1 class="<%= page.title.toLowerCase() %>-text"><%= title %></h1>
-  <section>
-    <div>
-      <% if (user?.profile.equals('644987e456f0916e642d8ec1')) { %>
-        <a href="/pages/<%= page._id %>/edit">
-          <button>Change Name</button>
-        </a>
-      <% } %>
-    </div>
-    <div>
-      <table class="<%= page.title.toLowerCase() %>-text">
-        <thead>
-          <th></th>
-          <th>Favourite Teams:</th>
-        </thead>
-        <tbody>
-          <% page.favTeams.forEach(team => { %>
-            <tr>
-              <td>
+  <div class="center">
+    <h1 class="<%= page.title.toLowerCase() %>-text"><%= title %></h1>
+    <section class="fav-text">
+      <div>
+        <% if (user?.profile.equals('644987e456f0916e642d8ec1')) { %>
+          <a href="/pages/<%= page._id %>/edit">
+            <button>Change Name</button>
+          </a>
+        <% } %>
+      </div>
+      <div>
+        <h3 class="<%= page.title.toLowerCase() %>-text">Favourite Teams:</h3>
+        <table class="<%= page.title.toLowerCase() %>-text">
+          <tbody>
+            <% page.favTeams.forEach(team => { %>
+              <tr>
+                <td>
                   <% if (page.creator.equals(user?.profile._id)) { %>
-                  <form action="/pages/<%= page._id %>/teams/<%= team._id %>?_method=DELETE" method="POST">
-                    <button>🗑️</button>
-                  </form>
+                    <form action="/pages/<%= page._id %>/teams/<%= team._id %>?_method=DELETE" method="POST">
+                      <button id="<%= page.title.toLowerCase() %>-btn"><img src="/assets/icons/trash-black-icon.svg" height="25px"></button>
+                    </form>
+                    <% } %>
+                  </td>
+                <td><a id="<%= page.title.toLowerCase() %>-link" href="/teams/<%= team._id %>"><%= team.name %></a></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3 class="<%= page.title.toLowerCase() %>-text">Favourite Athletes:</h3>
+        <table class="<%= page.title.toLowerCase() %>-text">
+          <tbody>
+            <% page.favAthletes.forEach(athlete => { %>
+              <tr>
+                <td>
+                  <% if (page.creator.equals(user?.profile._id)) { %>
+                    <form action="/pages/<%= page._id %>/athletes/<%= athlete._id %>?_method=DELETE" method="POST">
+                      <button id="<%= page.title.toLowerCase() %>-btn"><img src="/assets/icons/trash-black-icon.svg" height="25px"></button>
+                    </form>
                   <% } %>
                 </td>
-              <td><a class="team-btn" href="/teams/<%= team._id %>"><%= team.name %></a></td>
-            </tr>
+                <td><a id="<%= page.title.toLowerCase() %>-link" href="/athletes/<%= athlete._id %>"><%= athlete.name %></a></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <% if (page.creator.equals(user?.profile._id)) { %>
+      <form id="add-teams-to-fav" action="/pages/<%= page._id %>/teams" method="POST">
+        <select name="teamId">
+          <option value="select" disabled selected>select a <%= title.toLowerCase() %> team</option>
+          <% teams.forEach(team => { %>
+            <option value="<%= team._id %>"><%= team.name %></option>
           <% }) %>
-        </tbody>
-      </table>
-    </div>
-    <div>
-      <table class="<%= page.title.toLowerCase() %>-text">
-        <thead>
-          <th></th>
-          <th>Favourite Athletes:</th>
-        </thead>
-        <tbody>
-          <% page.favAthletes.forEach(athlete => { %>
-            <tr>
-              <td>
-                <% if (page.creator.equals(user?.profile._id)) { %>
-                  <form action="/pages/<%= page._id %>/athletes/<%= athlete._id %>?_method=DELETE" method="POST">
-                    <button>🗑️</button>
-                  </form>
-                <% } %>
-              </td>
-              <td><a class="athlete-btn" href="/athletes/<%= athlete._id %>"><%= athlete.name %></a></td>
-            </tr>
+        </select>
+        <button type="submit">Add</button>
+      </form>
+      <form id="add-athletes-to-fav" action="/pages/<%= page._id %>/athletes" method="POST">
+        <select name="athleteId">
+          <option value="select" disabled selected>select a <%= title.toLowerCase() %> athlete</option>
+          <% athletes.forEach(athlete => { %>
+            <option value="<%= athlete._id %>"><%= athlete.name %></option>
           <% }) %>
-        </tbody>
-      </table>
-    </div>
-  </section>
-  <% if (page.creator.equals(user?.profile._id)) { %>
-    <form id="add-teams-to-fav" action="/pages/<%= page._id %>/teams" method="POST">
-      <select name="teamId">
-        <option value="select" disabled selected>select a <%= title.toLowerCase() %> team</option>
-        <% teams.forEach(team => { %>
-          <option value="<%= team._id %>"><%= team.name %></option>
-        <% }) %>
-      </select>
-      <button type="submit">Add</button>
-    </form>
-    <form id="add-athletes-to-fav" action="/pages/<%= page._id %>/athletes" method="POST">
-      <select name="athleteId">
-        <option value="select" disabled selected>select a <%= title.toLowerCase() %> athlete</option>
-        <% athletes.forEach(athlete => { %>
-          <option value="<%= athlete._id %>"><%= athlete.name %></option>
-        <% }) %>
-      </select>
-      <button type="submit">Add</button>
-    </form>
-  <% } %>
-  <% if (user) { %>
-  <h2 class="<%= page.title.toLowerCase() %>-text">Comments</h2>
-  <form id="add-comment-form" action="/pages/<%= page._id %>/comments" method="POST">
-    <div class="add-comment-form">
-      <textarea name="content" id="content-textarea"></textarea>
-      <button type="submit">Add Comment</button>
-    </div>
-  </form>
-    <% if (page.comments.length) { %>
-      <table>
-        <tbody class="table-body">
-          <% page.comments.forEach(function(comment) { %>
-            <tr class="<%= page.title.toLowerCase() %>-text comment-row">
-              <% if (comment.creator.equals(user?.profile._id)) { %>
-              <td>
-                <form action="/pages/<%= page._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                  <button>🗑️</button>
-                </form>
-              </td>
-              <% } %>
-              <td class="date-text"><%= comment.createdAt.toLocaleDateString() %></td>
-              <td class="comment-text">
-                <textarea><%= comment.content %></textarea>
-              </td>
-              <td class="creator-text">-<%= comment.creator.name %></td>
-            </tr>
-          <% }) %>
-        </tbody>
-      </table>
-    <% } else { %>
-      <h3 class="<%= page.title.toLowerCase() %>-text">Leave a comment!</h3>
+        </select>
+        <button type="submit">Add</button>
+      </form>
     <% } %>
-  <% } %>
+    <% if (user) { %>
+      <h2 class="<%= page.title.toLowerCase() %>-text">Comments:</h2>
+      <% if (page.comments.length) { %>
+        <table>
+          <tbody class="table-body">
+            <% page.comments.forEach(function(comment) { %>
+              <tr class="<%= page.title.toLowerCase() %>-text comment-row">
+                <% if (comment.creator.equals(user?.profile._id)) { %>
+                  <td>
+                    <form action="/pages/<%= page._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                      <button id="<%= page.title.toLowerCase() %>-btn" ><img src="/assets/icons/trash-black-icon.svg" height="25px"></button>
+                    </form>
+                  </td>
+                <% } %>
+                <td class="date-text"><%= comment.createdAt.toLocaleDateString() %></td>
+                <td class="comment-text">
+                  <textarea><%= comment.content %></textarea>
+                </td>
+                <td class="creator-text">-<%= comment.creator.name %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <h3 class="<%= page.title.toLowerCase() %>-text">Leave a comment!</h3>
+      <% } %>
+      <form id="add-comment-form" action="/pages/<%= page._id %>/comments" method="POST">
+        <div class="add-comment-form">
+          <textarea name="content" id="content-textarea"></textarea>
+          <button type="submit">Add Comment</button>
+        </div>
+      </form>
+    <% } %>
+  </div>
 </main>
 
 

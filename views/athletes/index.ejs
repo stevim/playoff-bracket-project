@@ -8,14 +8,14 @@
     <tbody>
       <% athletes.forEach(athlete => { %>
       <tr>
-        <td><a class="ta-link" href="/athletes/<%= athlete._id %>"><%= athlete.name %></a></td>
         <% if (athlete.creator.equals(user?.profile._id)) { %>
           <td>
             <form action="/athletes/<%= athlete._id %>?_method=DELETE" method="POST">
-              <button type="submit">X</button>
+              <button class="def-del-btn" type="submit"><img src="/assets/icons/trash-icon.svg" height="25px"></button>
             </form>
           </td>
         <% } %>
+        <td><a class="ta-link" href="/athletes/<%= athlete._id %>"><%= athlete.name %></a></td>
       </tr>
       <% }) %>
     </tbody>
