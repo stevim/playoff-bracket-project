@@ -6,14 +6,14 @@
   <table id="team-list">
     <tbody>
       <% teams.forEach((team) => { %>
-      <tr>
-        <% if (team.creator.equals(user?.profile._id)) { %>
+        <tr id="ta-row">
           <td>
-            <form action="/teams/<%= team._id %>?_method=DELETE" method="POST">
-              <button class="def-del-btn" type="submit"><img src="/assets/icons/trash-icon.svg" height="25px"></button>
-            </form>
+            <% if (team.creator.equals(user?.profile._id)) { %>
+              <form action="/teams/<%= team._id %>?_method=DELETE" method="POST">
+                <button class="def-del-btn" type="submit"><img src="/assets/icons/trash-icon.svg" height="25px"></button>
+              </form>
+            <% } %>
           </td>
-        <% } %>
         <td><a class="ta-link" href="/teams/<%= team._id %>"><%= team.name %></a></td>
       </tr>
       <% }) %>
