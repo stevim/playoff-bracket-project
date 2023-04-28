@@ -1,1 +1,1 @@
-![image](/assets/sportspage.png)
+![image](/public/assets/sportspage.png)
