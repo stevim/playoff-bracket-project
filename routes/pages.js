@@ -15,7 +15,7 @@ router.get('/:pageId/edit', isLoggedIn, pagesCtrl.edit)
 
 router.post('/', isLoggedIn, pagesCtrl.create)
 
-router.post('/:pageId/comments', pagesCtrl.createComment)
+router.post('/:pageId/comments', isLoggedIn, pagesCtrl.createComment)
 
 router.post('/:pageId/teams', isLoggedIn, pagesCtrl.addToFavTeams)
 
