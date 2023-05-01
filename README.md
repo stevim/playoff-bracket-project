@@ -6,14 +6,14 @@
 
 TRASHTALK is an app that allows sports fanatics to login via their Google account and rep their favourite sports, teams, and athletes.
 
-Users can leave their thoughts on various sports, and other user's teams and athletes. Hype eachother up! Or start talking some trash!
+Users can leave their thoughts on various sports, and other users' teams and athletes. Hype each other's choices up! Or start talking some trash!
 
 Planning materials can be found [here](https://trello.com/b/4ix6Z913/playoff-brackets)
 
 
 ## Technologies Used
 * Express
-* Javascript
+* JavaScript
 * EJS
 * Node.js
 * MongoDB

@@ -22,7 +22,7 @@
                 <td>
                   <% if (team.creator.equals(user?.profile._id)) { %>
                     <form action="/pages/<%= page._id %>/teams/<%= team._id %>?_method=DELETE" method="POST">
-                      <button id="<%= page.title.toLowerCase() %>-btn"><img src="/assets/icons/trash-black-icon.svg" height="25px"></button>
+                      <button id="<%= page.title.toLowerCase() %>-btn"><img src="/assets/icons/trash-white-icon.svg" height="25px"></button>
                     </form>
                     <% } %>
                   </td>
@@ -41,7 +41,7 @@
                 <td>
                   <% if (athlete.creator.equals(user?.profile._id)) { %>
                     <form action="/pages/<%= page._id %>/athletes/<%= athlete._id %>?_method=DELETE" method="POST">
-                      <button id="<%= page.title.toLowerCase() %>-btn"><img src="/assets/icons/trash-black-icon.svg" height="25px"></button>
+                      <button id="<%= page.title.toLowerCase() %>-btn"><img src="/assets/icons/trash-white-icon.svg" height="25px"></button>
                     </form>
                   <% } %>
                 </td>
@@ -82,7 +82,7 @@
                 <% if (comment.creator.equals(user?.profile._id)) { %>
                   <td>
                     <form action="/pages/<%= page._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                      <button id="<%= page.title.toLowerCase() %>-btn" ><img src="/assets/icons/trash-black-icon.svg" height="25px"></button>
+                      <button id="<%= page.title.toLowerCase() %>-btn" ><img src="/assets/icons/trash-white-icon.svg" height="25px"></button>
                     </form>
                   </td>
                 <% } %>

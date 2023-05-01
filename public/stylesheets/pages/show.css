@@ -6,167 +6,172 @@ main {
 #soccer {
   background-image: url('/assets/soccer/soccer-back.svg');
   background-size: cover;
-  background-color: #43B05C;
+  background-color: #303030;
 }
 
 .soccer-text {
-  background-color: #43B05C;
-  color: black;
+  background-color: #303030;
+  color: white;
 }
 
 #soccer-link {
-  background-color: #43B05C;
-  color: black;
+  background-color: #303030;
+  color: white;
 }
 
 #soccer-btn {
-  background-color: #43B05C;
+  background-color: #303030;
   border-width: 0;
+  color: white;
 }
 
 #basketball {
   background-image: url('/assets/basketball/basketball-back.svg');
   background-size: cover;
-  background-color: #F6BB42;
+  background-color: #303030;
 }
 
 .basketball-text {
-  background-color: #F6BB42;
-  color: #E9573F;
+  color: white;
 }
 
 #basketball-link {
-  background-color: #F6BB42;
-  color: #E9573F;
+  color: white;
 }
 
 #basketball-btn {
   border-width: 0;
-  background-color: #F6BB42;
+  background-color: #303030;
+  color: white;
 }
 
 #baseball {
   background-image: url('/assets/baseball/baseball-back.svg');
   background-size: cover;
-  background-color: #B77729;
+  background-color: #303030;
 }
 
 .baseball-text {
-  background-color: #58ab2b;
-  color: #603d11;
+  background-color: #303030;
+  color: white;
 }
 
 #baseball-link {
-  background-color: #58ab2b;
-  color: #603d11;
+  background-color: #303030;
+  color: white;
 }
 
 #baseball-btn {
   border-width: 0;
-  background-color: #58ab2b;
+  background-color: #303030;
+  color: white;
 }
 
 #hockey {
   background-image: url('/assets/hockey/hockey-back.svg');
   background-size: cover;
-  background-color: #85d6ff;
+  background-color: #303030;
 }
 
 .hockey-text {
-  background-color: #85d6ff;
-  color: #f20202;
+  background-color: #303030;
+  color: white;
 }
 
 #hockey-link {
-  background-color: #85d6ff;
-  color: #f20202;
+  background-color: #303030;
+  color: white;
 }
 
 #hockey-btn {
-  background-color: #85d6ff;
+  background-color: #303030;
   border-width: 0;
+  color: white;
 }
 
 #football {
   background-image: url('/assets/football/football-back.svg');
   background-size: cover;
-  background-color: #9EC552;
+  background-color: #303030;
 }
 
 .football-text {
-  background-color: #9EC552;
-  color: black;
+  background-color: #303030;
+  color: white;
 }
 
 #football-link {
-  background-color: #9EC552;
-  color: black;
+  background-color: #303030;
+  color: white;
 }
 
 #football-btn {
-  background-color: #9EC552;
+  background-color: #303030;
   border-width: 0;
+  color: white;
 }
 
 #tennis {
   background-image: url('/assets/tennis/tennis-back.svg');
   background-size: cover;
-  background-color: #43B05C;
+  background-color: #303030;
 }
 
 .tennis-text {
-  background-color: #43B05C;
-  color: black;
+  color: white;
 }
 
 #tennis-link {
-  background-color: #43B05C;
-  color: black;
+  background-color: #303030;
+  color: white;
 }
 
 #tennis-btn {
-  background-color: #43B05C;
+  background-color: #303030;
   border-width: 0;
+  color: white;
 }
 
 #golf {
   background-image: url('/assets/golf/golf-back.svg');
   background-size: cover;
-  background-color: #54B265;
+  background-color: #303030;
 }
 
 .golf-text {
-  background-color: #54B265;
-  color: black;
+  background-color: #303030;
+  color: white;
 }
 
 #golf-link {
-  background-color: #54B265;
-  color: black;
+  background-color: #303030;
+  color: white;
 }
 
 #golf-btn {
-  background-color: #54B265;
+  background-color: #303030;
   border-width: 0;
+  color: white;
 }
 
 #motorsports {
   background-image: url('/assets/motorsports/motorsports-back.svg');
   background-size: cover;
-  background-color: #8f9c9e;
+  background-color: #303030;
 }
 
 .motorsports-text {
-  background-color: #8f9c9e;
-  color: rgb(210, 25, 25);
+  background-color: #303030;
+  color: white;
 }
 
 #motorsports-link {
-  background-color: #8f9c9e;
-  color: rgb(210, 25, 25);
+  background-color: #303030;
+  color: white;
 }
 
 #motorsports-btn {
-  background-color: #8f9c9e;
+  background-color: #303030;
   border-width: 0;
+  color: white;
 }
